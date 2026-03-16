@@ -1,0 +1,768 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.input-section h2 {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#parts-container {
+    margin-bottom: 20px;
+}
+
+/* Drag and Drop Styles */
+.dragging {
+    display: none;
+}
+
+.drag-over {
+    display: none;
+}
+
+.part-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.add-part-inline-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.add-part-inline-btn:hover {
+    background-color: #218838;
+}
+
+.part-input-title {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    min-height: 40px;
+    resize: none;
+    overflow: hidden;
+}
+
+.part-input-title:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.remove-btn {
+    padding: 5px 10px;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Remove button hover effects */
+.remove-btn:hover {
+    background-color: #a52a2a;
+}
+
+/* Annex Input Styles */
+.annex-input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.annex-input select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.annex-input input {
+    padding: 5px;
+}
+
+.remove-annex-btn {
+    padding: 5px 10px;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Remove annex button hover effects - disabled as requested */
+.remove-annex-btn:hover {
+    background-color: #a52a2a;
+}
+
+.add-annex-to-part-btn {
+    padding: 8px 16px;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.add-annex-to-part-btn:hover {
+    background-color: #7d3c98;
+}
+
+.add-part-here-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.add-part-here-btn:hover {
+    background-color: #218838;
+}
+
+#add-annex-btn {
+    background-color: #6b21a8;
+    color: white;
+}
+
+#add-annex-btn:hover {
+    background-color: #581c87;
+}
+
+#add-part-btn, #generate-btn, #print-btn, #save-docx-btn {
+    padding: 12px 24px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+#save-docx-btn {
+    background-color: #ea580c;
+    color: white;
+}
+
+#save-docx-btn:hover {
+    background-color: #c2410c;
+}
+
+#add-part-btn {
+    background-color: #663399;
+    color: white;
+}
+
+#add-part-btn:hover {
+    background-color: #55228b;
+}
+
+#generate-btn {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+#generate-btn:hover {
+    background-color: #1e40af;
+}
+
+#print-btn {
+    background-color: #f59e0b;
+    color: white;
+}
+
+#print-btn:hover {
+    background-color: #d97706;
+}
+
+.preview-section {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid #eee;
+}
+
+.preview-section h2 {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* TOC Print Styles */
+.toc-page {
+    border: 3px solid black;
+    padding: 10px;
+    margin: 0 auto 20px auto;
+    background: white;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    page-break-after: always;
+}
+
+.toc-content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.toc-title {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.toc-content {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500 !important;
+}
+
+.toc-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    page-break-inside: avoid;
+}
+
+.toc-item-text {
+    white-space: nowrap;
+    max-width: none;
+    align-self: center;
+    flex-grow: 0;
+}
+
+.toc-item-letter {
+    margin-left: 10px;
+    font-weight: 900 !important;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.dot-leaders {
+    flex-grow: 1;
+    position: relative;
+    margin: 0 6px;
+    align-self: center;
+    min-width: 50px;
+    height: 1em;
+}
+
+.dot-leaders::before {
+    content: "................................................................................................................................................................................................................................................................................................................................................................................................................................";
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    color: #000 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Part Page Styles */
+.part-page {
+    border: 3px solid black;
+    padding: 10px;
+    margin: 0 auto 20px auto;
+    background: white;
+    box-sizing: border-box;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.part-title {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.part-letter {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.annexes-section {
+    margin-top: 60px;
+}
+
+.annexes-title {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.annex-item {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.annex-item strong {
+    font-weight: 900 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        margin: 0;
+        max-width: none;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .input-section h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .part-input {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+        align-items: stretch;
+    }
+    
+    .part-input .add-part-inline-btn {
+        align-self: flex-start;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .part-input-title {
+        font-size: 14px;
+        padding: 12px;
+        margin: 0;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    
+    .remove-btn {
+        align-self: flex-start;
+        margin: 5px 0 0 0;
+        border-radius: 4px;
+    }
+    
+    .annex-input {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .annex-input select,
+    .annex-input input,
+    .annex-input textarea {
+        width: 100%;
+        margin-bottom: 5px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    .annex-input textarea {
+        min-height: 60px;
+        resize: none;
+    }
+    
+    .remove-annex-btn {
+        align-self: flex-end;
+        margin-top: 5px;
+    }
+    
+    .add-annex-to-part-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #generate-btn, #print-btn, #save-docx-btn {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    .print-options {
+        display: flex !important;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        margin-top: 15px;
+        background: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .print-options > div {
+        width: 100%;
+    }
+    
+    .print-options label {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .print-options select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .preview-section {
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    
+    .preview-section h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 10px;
+        margin: 0;
+    }
+    
+    h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .input-section h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .part-input {
+        padding: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .part-input-title {
+        font-size: 14px;
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .annex-input {
+        padding: 8px;
+    }
+    
+    .annex-input select,
+    .annex-input input,
+    .annex-input textarea {
+        font-size: 14px;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    
+    .annex-input textarea {
+        min-height: 50px;
+        resize: none;
+    }
+    
+    .remove-annex-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    .add-annex-to-part-btn {
+        padding: 10px 15px;
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    
+    #generate-btn, #print-btn, #save-docx-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .print-options {
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    .print-options label {
+        font-size: 13px;
+    }
+    
+    .print-options select {
+        font-size: 13px;
+        padding: 8px;
+    }
+    
+    .preview-section h2 {
+        font-size: 16px;
+    }
+}
+
+/* Touch-friendly buttons for mobile */
+@media (hover: none) and (pointer: coarse) {
+    #add-part-btn, #generate-btn, #print-btn, #save-docx-btn, .add-annex-to-part-btn, .remove-annex-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .annex-input select,
+    .annex-input input,
+    .annex-input textarea,
+    .part-input-title {
+        min-height: 44px;
+    }
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        background: none;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+    
+    .input-section,
+    .preview-section h2,
+    #print-btn {
+        display: none !important;
+    }
+    
+    .preview-section {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    
+    .toc-page {
+        margin: 0;
+        page-break-after: always;
+    }
+    
+    .part-page {
+        margin: 0;
+        page-break-after: always;
+    }
+    
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+        max-width: 95%;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    .input-section h2 {
+        font-size: 20px;
+    }
+    
+    .part-input {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .part-input-title {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    #generate-btn, #print-btn, #save-docx-btn {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+    
+    .print-options {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .print-options > div {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .container {
+        padding: 25px;
+        max-width: 1200px;
+    }
+    
+    h1 {
+        font-size: 32px;
+    }
+    
+    .input-section h2 {
+        font-size: 22px;
+    }
+}
+
+/* Touch-friendly buttons for mobile */
+@media (hover: none) and (pointer: coarse) {
+    #add-part-btn, #generate-btn, #print-btn, #save-docx-btn, .add-annex-to-part-btn, .remove-annex-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .annex-input select,
+    .annex-input input,
+    .part-input-title {
+        min-height: 44px;
+    }
+}
+
+/* Landscape mobile adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        margin: 0;
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .input-section h2 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .part-input {
+        padding: 8px;
+        margin-bottom: 8px;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .part-input-title {
+        flex: 1;
+        margin: 0;
+        padding: 8px;
+    }
+    
+    .annexes-container {
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+    
+    .print-options {
+        margin-top: 10px;
+        padding: 8px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .print-options > div {
+        flex: 1;
+        min-width: 150px;
+    }
+}
