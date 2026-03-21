@@ -327,12 +327,16 @@ function App() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
           <img
-            src="/logo.png"
+            src={`${process.env.PUBLIC_URL}/logo.png`}
             alt="Logo"
             style={{
               height: "80px",
               width: "75px",
               objectFit: "contain",
+            }}
+            onError={(e) => {
+              // Fallback if logo fails to load
+              e.target.style.display = 'none';
             }}
           />
           <h1 style={{ margin: 0 }}>Table of Contents Generator</h1>
