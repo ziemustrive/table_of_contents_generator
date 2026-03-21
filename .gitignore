@@ -1,3 +1,7 @@
 node_modules/
 build/
-.env
+.env/
+deploy.bat/
+deploy.sh/
+SSL-TROUBLESHOOTING.md/
+vercel.json
