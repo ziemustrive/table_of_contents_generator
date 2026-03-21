@@ -54,8 +54,8 @@
   ],
   "redirects": [
     {
-      "source": "http://:(.*)",
-      "destination": "https://:$1",
+      "source": "/(.*)",
+      "destination": "https://tocgenerator.vercel.app/$1",
       "permanent": true
     }
   ],
