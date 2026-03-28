@@ -52,13 +52,7 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://tocgenerator.vercel.app/$1",
-      "permanent": true
-    }
-  ],
+
   "cleanUrls": true,
   "trailingSlash": false
 }

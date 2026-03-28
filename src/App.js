@@ -336,7 +336,7 @@ function App() {
             }}
             onError={(e) => {
               // Fallback if logo fails to load
-              e.target.style.display = 'none';
+              e.target.style.display = "none";
             }}
           />
           <h1 style={{ margin: 0 }}>Table of Contents Generator</h1>
